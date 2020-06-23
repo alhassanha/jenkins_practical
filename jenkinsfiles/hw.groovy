@@ -4,19 +4,19 @@ pipeline {
         stage('clear workspace and download project') {
             steps {
                 script {
-                    cleanWs()
-                    withCredentials([
-						usernamePassword(credentialsId: 'srv_sudo',
-                        usernameVariable: 'username',
-                        passwordVariable: 'password')
-					]) {
-						try{
-							sh "echo '${password}' | sudo -S docker stop nginx_alhassan"
-                            sh "echo '${password}' | sudo -S docker container rm nginx_alhassan"
-						} catch (Exception e) {
-                            print 'no previous container, clean was skipped'
-                        }	
-					}
+			cleanWs()
+			withCredentials([
+				usernamePassword(credentialsId: 'srv_sudo',
+                        	usernameVariable: 'username',
+                        	passwordVariable: 'password')
+				]) {
+					try{
+						sh "echo '${password}' | sudo -S docker stop nginx_alhassan"
+                            			sh "echo '${password}' | sudo -S docker container rm nginx_alhassan"
+					} catch (Exception e) {
+                            			print 'no previous container, clean was skipped'
+                        		}	
+				}
                 }
                 script {
                     echo 'update project from git'

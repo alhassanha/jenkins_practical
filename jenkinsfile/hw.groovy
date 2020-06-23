@@ -56,7 +56,6 @@ pipeline {
                     ]) {
                         
                         sh "echo '${password}' | sudo -S docker exec -t nginx_alhassan bash -c 'df -h > /stat/stats.txt'"
-                        sh "echo '${password}' | sudo -S docker exec -t nginx_alhassan bash -c 'top -n 1 -b >> /stat/stats.txt'"
                     }
                 }
             }

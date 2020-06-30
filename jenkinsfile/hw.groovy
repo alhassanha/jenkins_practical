@@ -71,7 +71,6 @@ pipeline {
                     ]) {
                         
                         sh "echo '${password}' | sudo -S docker stop nginx_alhassan"
-                        sh "echo '${password}' | sudo -S docker container rm nginx_alhassan"
                     }
                 }
             }

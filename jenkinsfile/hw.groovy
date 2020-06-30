@@ -61,6 +61,21 @@ pipeline {
                 }
             }
         }
+	    stage ('stop docker container'){
+            steps{
+                script{
+                    withCredentials([
+                        usernamePassword(credentialsId: 'srv_sudo',
+                        usernameVariable: 'username',
+                        passwordVariable: 'password')
+                    ]) {
+                        
+                        sh "echo '${password}' | sudo -S docker stop nginx_alhassan"
+                        sh "echo '${password}' | sudo -S docker container rm nginx_alhassan"
+                    }
+                }
+            }
+        }
         
     }
 

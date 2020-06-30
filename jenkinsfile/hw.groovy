@@ -14,7 +14,8 @@ pipeline {
 						sh "echo '${password}' | sudo -S docker stop nginx_alhassan"
                             			sh "echo '${password}' | sudo -S docker container rm nginx_alhassan"
 					} catch (Exception e) {
-                            			print 'no previous container, clean was skipped'
+                            			print 'no previous container, operation was failed'
+						currentBuild.result = 'FAILURE'
                         		}	
 				}
                 }

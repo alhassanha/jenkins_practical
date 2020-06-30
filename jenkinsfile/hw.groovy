@@ -55,8 +55,8 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
                         
-                        sh "echo '${password}' | sudo -S docker exec -t nginx_alhassan 'df -h > stats.txt'"
-			sh "echo '${password}' | sudo -S docker exec -t nginx_alhassan 'top -n 1 -b >> stats.txt'"
+                        sh "echo '${password}' | sudo -S docker exec -t nginx_alhassan 'df -h > ~/stats.txt'"
+			sh "echo '${password}' | sudo -S docker exec -t nginx_alhassan 'top -n 1 -b >> ~/stats.txt'"
                     }
                 }
             }
